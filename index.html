@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spa Sassé — Demo Home</title>
+<meta name="description" content="Demo redesign of the Spa Sassé home page: luxury wellness and med spa in downtown Portland.">
+<!-- Design concept for review: keep it out of search results so it never competes with the real spasasse.com -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Link preview when the demo link is texted or emailed -->
+<meta property="og:title" content="Spa Sassé · Home page concept">
+<meta property="og:description" content="A calmer, easier-to-book home page for Portland's wellness and med spa since 1982.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://static.wixstatic.com/media/9d268d_3b253db3d2f54b4fa081c029a5c74a97~mv2.jpg/v1/crop/x_1513,y_640,w_2477,h_2028/fill/w_1200,h_630,al_c,q_85/lounge-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#3f4624">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233f4624'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' text-anchor='middle' fill='%23f6f4ee'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --olive:#596333;
+  --olive-2:#6e7548;
+  --olive-deep:#3f4624;
+  --cream:#f6f4ee;
+  --cream-2:#efe9df;
+  --sand:#d6cfc5;
+  --ink:#2f2e2e;
+  --ink-soft:#5d5a55;
+  --gold:#7d6238; /* darker gold: 4.7–5.7:1 on cream and white, readable at small sizes */
+  --white:#fff;
+  --radius:18px;
+  --shadow:0 18px 50px -24px rgba(47,46,46,.35);
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --sans:"Jost", system-ui, -apple-system, Segoe UI, sans-serif;
+  --gutter:clamp(16px,4vw,48px);
+  --max:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:clamp(42px,6.2vw,78px)}
+h2{font-size:clamp(34px,4.4vw,54px)}
+h3{font-size:26px}
+h1 em,h2 em{font-style:italic;color:var(--olive)}
+.lead{font-size:clamp(17px,1.4vw,19px);color:var(--ink-soft);max-width:34em}
+section{padding:clamp(64px,9vw,120px) 0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:clamp(32px,4vw,52px)}
+.sec-head .lead{margin-top:14px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--olive);color:var(--white);box-shadow:0 10px 24px -12px rgba(89,99,51,.8)}
+.btn-primary:hover{background:var(--olive-deep)}
+.btn-ghost{border:1.5px solid var(--olive);color:var(--olive)}
+.btn-ghost:hover{background:var(--olive);color:var(--white)}
+.btn-light{background:var(--cream);color:var(--olive-deep)}
+.btn-light:hover{background:var(--white)}
+.btn-sm{min-height:42px;padding:0 20px;font-size:12.5px}
+.link{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--olive);border-bottom:1px solid currentColor;padding-bottom:2px}
+.link:hover{color:var(--olive-deep)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* Header */
+.topbar{background:var(--olive-deep);color:var(--cream);font-size:13px;letter-spacing:.04em}
+.topbar .wrap{display:flex;justify-content:center;gap:28px;padding-top:9px;padding-bottom:9px;text-align:center}
+.topbar a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+@media (max-width:380px){.topbar{font-size:12px;letter-spacing:.02em}.topbar .wrap{gap:12px}}
+.topbar .hide-sm{display:inline}
+header.site{position:sticky;top:0;z-index:50;background:rgba(246,244,238,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid rgba(214,207,197,.7)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.logo img{height:46px;width:auto}
+.nav-links{display:flex;gap:34px;font-size:14px;font-weight:400;letter-spacing:.1em;text-transform:uppercase}
+.nav-links a{position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--olive);transform:scaleX(0);transition:transform .25s ease;transform-origin:left}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-actions{display:flex;align-items:center;gap:14px}
+.nav-dd{position:relative}
+.nav-dd .dd-trigger{display:inline-flex;align-items:center;gap:6px}
+.nav-dd .dd-trigger svg{transition:transform .2s ease}
+.nav-dd:hover .dd-trigger svg,.nav-dd:focus-within .dd-trigger svg{transform:rotate(180deg)}
+.dd-panel{position:absolute;top:100%;left:50%;width:560px;margin-top:14px;transform:translate(-50%,6px);opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;background:var(--white);border-radius:18px;box-shadow:0 24px 60px -24px rgba(47,46,46,.4);padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:4px;text-transform:none;letter-spacing:0;z-index:60}
+.dd-panel::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.nav-dd:hover .dd-panel,.nav-dd:focus-within .dd-panel{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.dd-panel a{display:block;padding:12px 14px;border-radius:12px}
+.dd-panel a::after{display:none}
+.dd-panel a:hover,.dd-panel a:focus-visible{background:var(--cream)}
+.dd-panel b{display:block;font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink)}
+.dd-panel span{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px}
+.dd-foot{grid-column:1/-1;border-top:1px solid var(--cream-2);margin-top:6px;padding-top:6px}
+.dd-foot a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--olive)}
+.nav-call{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:400;color:var(--ink)}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;align-items:center;justify-content:center;border:1px solid var(--sand)}
+.menu-btn span{display:block;width:18px;height:1.5px;background:var(--ink);position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink)}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+
+/* Mobile menu */
+.mobile-menu{position:fixed;inset:0;z-index:80;background:var(--cream);display:flex;flex-direction:column;padding:20px var(--gutter) 32px;transform:translateY(-100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);overflow-y:auto}
+.mobile-menu.open{transform:none}
+.mm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.mm-close{width:46px;height:46px;border-radius:50%;border:1px solid var(--sand);font-size:24px;line-height:1}
+.mm-group{border-top:1px solid var(--sand);padding:18px 0}
+.mm-group .eyebrow{display:block;margin-bottom:10px}
+.mm-group a{display:block;font-family:var(--serif);font-size:28px;line-height:1.5}
+.mm-cta{margin-top:auto;display:grid;gap:12px;padding-top:24px}
+
+/* Hero */
+.hero{padding:clamp(28px,4vw,56px) 0 clamp(56px,7vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero h1{margin:18px 0 22px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;font-size:14px;color:var(--ink-soft)}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust svg{color:var(--gold);flex:none}
+.hero-media{position:relative}
+.hero-media .main{width:100%;height:min(640px,calc(100vh - 170px));min-height:460px;object-fit:cover;object-position:25% center;border-radius:220px 220px var(--radius) var(--radius);box-shadow:var(--shadow)}
+.hero-card{position:absolute;left:-28px;bottom:36px;background:var(--white);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px;max-width:290px}
+.hero-card .stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+.hero-card p{font-size:14px;line-height:1.4;color:var(--ink-soft)}
+.hero-card strong{color:var(--ink);font-weight:500}
+
+/* Guide */
+.guide{background:var(--white)}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.chip{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;border:1.5px solid var(--sand);font-size:15px;font-weight:400;transition:all .2s ease;background:var(--cream)}
+.chip:hover{border-color:var(--olive)}
+.chip[aria-selected="true"]{background:var(--olive);border-color:var(--olive);color:var(--white)}
+.chip .ico{flex:none;color:var(--olive)}
+.chip[aria-selected="true"] .ico{color:var(--white)}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pick{border:1px solid var(--cream-2);background:var(--cream);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:12px;animation:rise .45s ease both}
+.pick:nth-child(2){animation-delay:.06s}.pick:nth-child(3){animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pick .tag{align-self:flex-start;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--cream-2);color:var(--olive);padding:5px 10px;border-radius:999px}
+.pick h3{font-size:27px}
+.pick p{font-size:15.5px;color:var(--ink-soft);flex:1}
+.pick .meta{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--sand);padding-top:14px;margin-top:4px}
+.pick .price{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ink)}
+.pick .price small{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--ink-soft)}
+.pick .dur{font-size:14px;color:var(--ink-soft)}
+.pick .btn{margin-top:6px;width:100%}
+.guide-foot{margin-top:28px;font-size:15px;color:var(--ink-soft)}
+.guide-foot a{color:var(--olive);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+
+/* Services */
+.services-row{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.svc{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--olive-deep);color:var(--white);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate}
+.svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s ease}
+.svc::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(30,30,24,0) 30%,rgba(30,30,24,.82) 100%)}
+.svc:hover img{transform:scale(1.05)}
+.svc-body{padding:22px}
+.svc h3{font-size:28px;margin-bottom:4px}
+.svc .from{font-size:14px;opacity:.85;margin-bottom:14px}
+.svc .row{display:flex;gap:14px;align-items:center;font-size:12.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.svc .row a:first-child{background:var(--cream);color:var(--olive-deep);padding:9px 14px;border-radius:999px}
+.svc .row a:last-child{border-bottom:1px solid rgba(255,255,255,.6)}
+
+/* Memberships */
+.members{background:var(--olive-deep);color:var(--cream)}
+.members .eyebrow{color:#cdb98f}
+.members h2 em{color:#d8c79f}
+.members .lead{color:rgba(246,244,238,.78)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.tier{background:rgba(246,244,238,.06);border:1px solid rgba(246,244,238,.16);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;position:relative}
+.tier.pop{background:var(--cream);color:var(--ink);border-color:var(--cream);transform:translateY(-10px);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.badge{position:absolute;top:-13px;left:30px;background:var(--gold);color:var(--white);font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.tier h3{font-size:32px}
+.tier .price{font-family:var(--serif);font-size:56px;font-weight:500;line-height:1;margin:18px 0 4px}
+.tier .price small{font-family:var(--sans);font-size:15px;font-weight:300;opacity:.75}
+.tier .points{font-size:15px;opacity:.8;margin-bottom:20px}
+.tier ul{list-style:none;display:grid;gap:11px;margin-bottom:28px;flex:1}
+.tier li{display:flex;gap:10px;font-size:15.5px;line-height:1.45}
+.tier li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:rgba(205,185,143,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23cdb98f' stroke-width='2.4'%3E%3Cpath d='M5 10.5l3.2 3L15 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.tier.pop li::before{background-color:rgba(89,99,51,.14);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23596333' stroke-width='2.4'%3E%3Cpath d='M5 10.5l3.2 3L15 7'/%3E%3C/svg%3E")}
+.tier .btn{width:100%}
+.tier:not(.pop) .btn{background:transparent;border:1.5px solid rgba(246,244,238,.5);color:var(--cream);box-shadow:none}
+.tier:not(.pop) .btn:hover{background:var(--cream);color:var(--olive-deep)}
+.points-strip{margin-top:44px;display:grid;grid-template-columns:auto repeat(4,1fr);gap:16px;align-items:stretch}
+.points-strip .label{font-family:var(--serif);font-size:24px;line-height:1.2;display:flex;align-items:center;padding-right:10px}
+.pt{border:1px solid rgba(246,244,238,.16);border-radius:14px;padding:16px 18px;font-size:14.5px;line-height:1.45;color:rgba(246,244,238,.85)}
+.pt b{display:block;font-family:var(--serif);font-size:22px;font-weight:600;color:#d8c79f;margin-bottom:2px}
+
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--white);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;gap:18px;box-shadow:0 1px 0 var(--cream-2)}
+.review .stars{color:var(--gold);letter-spacing:3px}
+.review blockquote{font-family:var(--serif);font-size:23px;line-height:1.35;flex:1}
+.review cite{font-style:normal;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* Visit */
+.visit{background:var(--white)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.steps{list-style:none;display:grid;gap:0;margin-top:30px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--cream-2);counter-increment:s}
+.steps li::before{content:counter(s);width:40px;height:40px;border-radius:50%;background:var(--cream);border:1px solid var(--sand);display:grid;place-items:center;font-family:var(--serif);font-size:20px;font-weight:600;color:var(--olive)}
+.steps b{display:block;font-weight:500;font-size:17px;margin-bottom:2px}
+.steps span{font-size:15.5px;color:var(--ink-soft)}
+.place{position:relative;border-radius:var(--radius);overflow:hidden;min-height:520px;color:var(--white);display:flex;align-items:flex-end;isolation:isolate}
+.place img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.place::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,24,.05),rgba(30,30,24,.78));z-index:-1}
+.place-card{padding:30px;width:100%}
+.place-card h3{font-size:34px;margin-bottom:16px}
+.place-card dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:15.5px;margin-bottom:22px}
+.place-card dt{opacity:.7}
+.place-card .btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* CTA */
+.cta{padding:clamp(64px,8vw,104px) 0;text-align:center}
+.cta h2{max-width:14em;margin:16px auto 18px}
+.cta .lead{margin:0 auto}
+.cta .hero-ctas{justify-content:center}
+
+footer{background:var(--ink);color:rgba(246,244,238,.75);padding:56px 0 110px;font-size:15px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer h4{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px}
+footer a:hover{color:var(--white)}
+.foot-logo{filter:invert(1) brightness(1.8);height:42px;width:auto;margin-bottom:16px}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid rgba(246,244,238,.12);margin-top:40px;padding-top:22px;font-size:13px}
+.demo-note{opacity:.6}
+
+/* Sticky mobile bar */
+.mbar{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;background:var(--white);border-radius:999px;box-shadow:0 14px 40px -12px rgba(47,46,46,.45);padding:6px;gap:6px;align-items:center;transform:translateY(140%);transition:transform .35s ease}
+.mbar.show{transform:none}
+.mbar a,.mbar button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:52px;font-size:11.5px;font-weight:500;letter-spacing:.06em;color:var(--ink-soft)}
+.mbar .book{flex:1.6;flex-direction:row;gap:8px;background:var(--olive);color:var(--white);border-radius:999px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+
+/* Booking sheet */
+dialog.sheet{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0}
+dialog.sheet::backdrop{background:rgba(30,30,24,.5);backdrop-filter:blur(3px)}
+.sheet-inner{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100% - 32px));background:var(--cream);border-radius:24px;padding:30px;box-shadow:0 40px 80px -30px rgba(0,0,0,.5)}
+.sheet-head{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-bottom:8px}
+.sheet h3{font-size:34px}
+.sheet .x{width:40px;height:40px;border-radius:50%;border:1px solid var(--sand);font-size:22px;line-height:1;flex:none}
+.sheet p.sub{color:var(--ink-soft);font-size:15.5px;margin-bottom:22px}
+.opt{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;padding:18px;border-radius:16px;background:var(--white);border:1.5px solid transparent;margin-bottom:12px;transition:border-color .2s ease,transform .2s ease}
+.opt:hover{border-color:var(--olive);transform:translateY(-1px)}
+.opt .oi{width:52px;height:52px;border-radius:14px;background:var(--cream-2);display:grid;place-items:center;font-size:24px}
+.opt b{display:block;font-weight:500;font-size:17px}
+.opt span{font-size:14px;color:var(--ink-soft);line-height:1.4;display:block}
+.opt .arrow{color:var(--olive);font-size:22px}
+.sheet .alt{text-align:center;font-size:14.5px;color:var(--ink-soft);margin-top:14px}
+.sheet .alt a{color:var(--olive);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+
+/* In-site booking panel */
+.bpanel{position:fixed;inset:0;z-index:90;background:var(--cream);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.bpanel.open{transform:none;visibility:visible}
+.bp-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;padding:0 var(--gutter);background:var(--olive-deep);color:var(--cream);flex:none}
+.bp-back{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;letter-spacing:.04em;color:var(--cream);min-height:44px;padding-right:8px}
+.bp-back svg{flex:none}
+.bp-title{font-family:var(--serif);font-size:20px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bp-new{font-size:12.5px;letter-spacing:.06em;color:rgba(246,244,238,.8);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.bp-frame{flex:1;position:relative;background:var(--white)}
+.bp-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bp-loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink-soft);font-size:15px}
+.bp-help{flex:none;text-align:center;font-size:13px;color:var(--ink-soft);padding:8px var(--gutter);background:var(--cream);border-top:1px solid var(--cream-2)}
+.bp-help a{color:var(--olive);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+
+section[id]{scroll-margin-top:70px}
+
+/* Treatment menu sheet */
+.tsheet{position:fixed;inset:0;z-index:85;background:var(--cream);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);visibility:hidden;-webkit-overflow-scrolling:touch}
+.tsheet.open{transform:none;visibility:visible}
+.ts-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px;padding:0 var(--gutter);background:rgba(246,244,238,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--cream-2)}
+.ts-back{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;min-height:44px}
+.ts-actions{display:flex;align-items:center;gap:10px}
+.mobile-menu{z-index:88} /* above treatment menus (85), below booking (90) */
+.ts-hero{position:relative;height:clamp(200px,32vw,340px);color:var(--white);display:flex;align-items:flex-end;isolation:isolate}
+.ts-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.ts-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(30,30,24,.05),rgba(30,30,24,.72))}
+.ts-hero .wrap{width:100%;padding-bottom:26px}
+.ts-hero h2{color:var(--white)}
+.ts-hero p{opacity:.9;max-width:36em;margin-top:6px}
+.ts-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:32px 0 40px}
+.ts-item{background:var(--white);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.ts-item .top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.ts-item h3{font-size:24px}
+.ts-item .pr{font-family:var(--serif);font-size:22px;font-weight:600;white-space:nowrap}
+.ts-item .pr small{font-family:var(--sans);font-size:12.5px;font-weight:300;color:var(--ink-soft)}
+.ts-item .opts{font-size:13.5px;color:var(--olive);font-weight:500}
+.ts-item p{font-size:15px;color:var(--ink-soft);flex:1}
+.ts-item .btn{align-self:flex-start;margin-top:6px}
+.ts-foot{padding:0 0 110px;font-size:14.5px;color:var(--ink-soft)}
+.ts-foot a{color:var(--olive);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:860px){.ts-list{grid-template-columns:1fr;padding-top:22px}.ts-item{padding:20px}}
+
+/* Book Now flow */
+.flow{position:fixed;inset:0;z-index:86;background:var(--cream);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.flow.open{transform:none;visibility:visible}
+.fl-bar{flex:none;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:62px;padding:0 var(--gutter);border-bottom:1px solid var(--cream-2);background:var(--cream)}
+.fl-bar .ts-back{justify-self:start}
+.fl-bar .ttl{font-family:var(--serif);font-size:22px;font-weight:500}
+.fl-close{justify-self:end;width:42px;height:42px;border-radius:50%;border:1px solid var(--sand);font-size:22px;line-height:1}
+.fl-steps{flex:none;display:flex;justify-content:center;gap:8px;padding:14px var(--gutter) 6px}
+.fl-step{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.06em;color:var(--ink-soft)}
+.fl-step i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--sand);font-size:13px;background:var(--white)}
+.fl-step.on{color:var(--olive)}
+.fl-step.on i{background:var(--olive);border-color:var(--olive);color:var(--white)}
+.fl-step.done i{background:var(--cream-2);border-color:var(--olive-2);color:var(--olive)}
+.fl-step + .fl-step::before{content:"";width:22px;height:1.5px;background:var(--sand);margin-right:2px}
+.fl-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.fl-inner{max-width:880px;margin:0 auto;padding:18px var(--gutter) 130px}
+.fl-inner h2{font-size:clamp(30px,4vw,40px);margin-bottom:6px}
+.fl-inner .sub{color:var(--ink-soft);font-size:15.5px;margin-bottom:20px}
+.fl-cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gutter) * -1) 18px;padding:2px var(--gutter)}
+.fl-cats::-webkit-scrollbar{display:none}
+.fl-cats .chip{flex:none;padding:10px 16px;font-size:14.5px}
+.fl-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fl-card{text-align:left;background:var(--white);border:1.5px solid transparent;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s ease,box-shadow .2s ease}
+.fl-card:hover{border-color:var(--sand)}
+.fl-card.sel{border-color:var(--olive);box-shadow:0 0 0 3px rgba(89,99,51,.12)}
+.fl-card .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.fl-card b{font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.15}
+.fl-card .pr{font-family:var(--serif);font-size:19px;font-weight:600;white-space:nowrap}
+.fl-card .pr small{font-family:var(--sans);font-size:12px;font-weight:300;color:var(--ink-soft)}
+.fl-card span.d{font-size:14px;color:var(--ink-soft);line-height:1.45}
+.fl-lens{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.fl-len{padding:8px 14px;border-radius:999px;border:1.5px solid var(--sand);font-size:14px;background:var(--cream)}
+.fl-len.sel{background:var(--olive);border-color:var(--olive);color:var(--white)}
+.fl-pros{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.fl-pro{background:var(--white);border:1.5px solid transparent;border-radius:16px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.fl-pro.sel{border-color:var(--olive);box-shadow:0 0 0 3px rgba(89,99,51,.12)}
+.fl-pro .av{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:center 22%;background:var(--cream-2);display:grid;place-items:center;font-family:var(--serif);font-size:28px;color:var(--olive)}
+.fl-pro b{font-weight:500;font-size:16px}
+.fl-pro span{font-size:13px;color:var(--ink-soft);line-height:1.35}
+.fl-sum{background:var(--white);border-radius:18px;padding:22px;display:grid;gap:14px}
+.fl-sum .row{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--cream-2);padding-bottom:12px}
+.fl-sum .row:last-child{border:0;padding:0}
+.fl-sum dt{color:var(--ink-soft);font-size:14.5px}
+.fl-sum dd{font-weight:500;text-align:right}
+.fl-sum .edit{font-size:13px;color:var(--olive);text-decoration:underline;text-underline-offset:3px;margin-left:8px;font-weight:400}
+.fl-next{margin-top:18px;display:grid;gap:10px;list-style:none;counter-reset:n}
+.fl-next li{display:flex;gap:12px;font-size:15px;color:var(--ink-soft);counter-increment:n}
+.fl-next li::before{content:counter(n);flex:none;width:24px;height:24px;border-radius:50%;background:var(--cream-2);color:var(--olive);display:grid;place-items:center;font-size:12.5px;font-weight:500}
+.fl-note{margin-top:16px;font-size:13.5px;color:var(--ink-soft)}
+.fl-note a{color:var(--olive);text-decoration:underline;text-underline-offset:3px}
+.fl-foot{position:absolute;left:0;right:0;bottom:0;background:rgba(246,244,238,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--cream-2);padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom))}
+.fl-foot .in{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fl-foot .fl-pick{font-size:14px;color:var(--ink-soft);line-height:1.35;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.fl-foot .fl-pick{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.fl-foot .fl-pick b{color:var(--ink);font-weight:500;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fl-foot .btn[disabled]{opacity:.4;pointer-events:none}
+.fl-alt{margin-top:22px;font-size:14px;color:var(--ink-soft)}
+.fl-alt a{color:var(--olive);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.fl-preview{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;letter-spacing:.06em;color:var(--olive-deep);background:var(--cream-2);border:1px dashed var(--olive-2);border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.fl-days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(var(--gutter) * -1) 20px;padding:2px var(--gutter);scroll-padding-inline:var(--gutter)}
+.fl-days::-webkit-scrollbar{display:none}
+.fl-day{flex:none;width:66px;padding:10px 0;border-radius:14px;background:var(--white);border:1.5px solid transparent;display:flex;flex-direction:column;align-items:center;gap:2px}
+.fl-day small{font-size:11.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.fl-day b{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.1}
+.fl-day em{font-style:normal;font-size:11px;color:var(--olive)}
+.fl-day.sel{background:var(--olive);color:var(--white)}
+.fl-day.sel small,.fl-day.sel em{color:rgba(255,255,255,.85)}
+.fl-day[disabled]{opacity:.45}
+.fl-part{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:16px 0 10px}
+.fl-times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.fl-time{padding:12px 0;border-radius:12px;background:var(--white);border:1.5px solid var(--cream-2);font-size:15px;font-weight:500}
+.fl-time:hover{border-color:var(--olive-2)}
+.fl-time.sel{background:var(--olive);border-color:var(--olive);color:var(--white)}
+.fl-none{background:var(--white);border-radius:14px;padding:18px;font-size:15px;color:var(--ink-soft)}
+.fl-form{display:grid;gap:10px;margin-top:18px}
+.fl-form label{display:grid;gap:4px;font-size:13px;font-weight:500;color:var(--ink-soft)}
+.fl-form input{font:inherit;font-size:15px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--cream-2);background:var(--cream);color:var(--ink-soft)}
+.fl-done{text-align:center;padding-top:10px}
+.fl-done .ok{width:72px;height:72px;border-radius:50%;background:var(--olive);color:var(--white);display:grid;place-items:center;margin:0 auto 18px;font-size:34px}
+.fl-done h2{margin-bottom:8px}
+.fl-done .when{font-family:var(--serif);font-size:24px;margin:6px 0 18px}
+.fl-done .fl-sum{text-align:left;margin:18px 0}
+.fl-banner{background:#fbf3e2;border:1px solid #ead9b5;color:#6b5527;border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.5;text-align:left}
+.fl-banner b{font-weight:500}
+@media (max-width:860px){.fl-times{grid-template-columns:repeat(3,1fr)}}
+.bp-pick{flex:none;background:var(--cream-2);color:var(--olive-deep);font-size:13.5px;text-align:center;padding:8px var(--gutter);display:none}
+.bp-pick.show{display:block}
+@media (max-width:860px){
+  .fl-list{grid-template-columns:1fr}
+  .fl-pros{grid-template-columns:1fr 1fr}
+  .fl-step span{display:none}
+  .fl-bar .ttl{font-size:20px}
+}
+
+/* Specials */
+.specials-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.spc{background:var(--white);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--cream-2)}
+.spc .ph{position:relative;aspect-ratio:16/10;background:var(--cream-2)}
+.spc .ph img{width:100%;height:100%;object-fit:cover}
+.spc .off{position:absolute;top:14px;left:14px;background:var(--olive);color:var(--white);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.spc .bd{padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.spc h3{font-size:25px}
+.spc p{font-size:15px;color:var(--ink-soft);flex:1}
+.spc .code{display:inline-block;font-weight:500;color:var(--olive);background:var(--cream-2);border:1px dashed var(--olive-2);padding:2px 8px;border-radius:6px;letter-spacing:.08em}
+.spc .acts{display:flex;align-items:center;gap:16px;margin-top:8px}
+.fine{margin-top:20px;font-size:13px;color:var(--ink-soft)}
+.fine a{text-decoration:underline;text-underline-offset:3px}
+
+/* Team */
+.team{background:var(--white)}
+.team-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:20px}
+.member{border-radius:var(--radius);overflow:hidden;background:var(--cream);display:flex;flex-direction:column}
+.member img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%}
+.member.feature img{aspect-ratio:auto;flex:1;min-height:0;height:100%}
+.member .bd{padding:20px 22px 24px}
+.member .role{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.member h3{font-size:27px;margin-bottom:8px}
+.member p{font-size:15px;color:var(--ink-soft)}
+.member.feature{display:grid;grid-template-rows:1fr auto}
+.crew{display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;margin-top:30px;padding-top:26px;border-top:1px solid var(--cream-2)}
+.crew .faces{display:flex}
+.crew .faces img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 25%;border:3px solid var(--white);margin-left:-12px}
+.crew .faces img:first-child{margin-left:0}
+.crew p{font-size:15px;color:var(--ink-soft);flex:1;min-width:220px}
+
+/* Visit: photos + stats */
+.visit-photos{margin-top:clamp(40px,6vw,72px)}
+.vp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px 40px;margin-bottom:22px}
+.vp-head h3{font-size:clamp(26px,3vw,34px)}
+.vp-head .stats{margin-top:0}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.gallery img:first-child{grid-row:1/3}
+.stats{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:28px}
+.stat b{display:block;font-family:var(--serif);font-size:44px;font-weight:500;line-height:1;color:var(--olive)}
+.stat span{font-size:14px;color:var(--ink-soft)}
+.rating-pill{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--cream-2);border-radius:999px;padding:8px 16px;font-size:14px}
+.rating-pill b{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1}
+.rating-pill .stars{color:var(--gold);letter-spacing:1px}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* ---------- Tablet ---------- */
+@media (max-width:1080px){
+  .nav-links{gap:22px;font-size:13px}
+  .nav-call .num{display:none}
+  .services-row{grid-template-columns:repeat(3,1fr)}
+  .svc{min-height:360px}
+  .points-strip{grid-template-columns:repeat(2,1fr)}
+  .points-strip .label{grid-column:1/-1}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+/* ---------- Phone ---------- */
+@media (max-width:860px){
+  body{font-size:16px}
+  .topbar .hide-sm{display:none}
+  .nav{height:66px}
+  .logo img{height:38px}
+  .nav-links,.nav-call,.nav-actions .btn{display:none}
+  .menu-btn{display:flex}
+  .hero{padding-top:12px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .hero-media{order:-1}
+  .hero-media .main{height:auto;min-height:0;aspect-ratio:5/4;border-radius:160px 160px var(--radius) var(--radius);object-position:center}
+  .hero-card{left:12px;bottom:-22px;right:auto;padding:12px 16px;max-width:260px}
+  .hero-text{padding-top:14px}
+  .hero h1{margin:14px 0 16px}
+  .hero-ctas{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
+  .hero-ctas .btn{width:100%}
+  .trust{gap:8px 16px;font-size:13.5px;margin-top:24px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(var(--gutter) * -1) 24px;padding:2px var(--gutter);scrollbar-width:none;scroll-snap-type:x mandatory}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;scroll-snap-align:start}
+  .pick{padding:22px}
+  .services-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 6px;gap:14px;scrollbar-width:none}
+  .services-row::-webkit-scrollbar{display:none}
+  .svc{flex:0 0 78%;min-height:400px;scroll-snap-align:start}
+  .swipe-hint{display:block!important}
+  .services-row,.reviews-grid,.chips{scroll-padding-inline:var(--gutter)}
+  .tier.pop{transform:none;order:-1}
+  .points-strip{grid-template-columns:1fr 1fr;gap:12px}
+  .reviews-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 6px;gap:14px;scrollbar-width:none}
+  .reviews-grid::-webkit-scrollbar{display:none}
+  .review{flex:0 0 86%;scroll-snap-align:start;padding:24px}
+  .review blockquote{font-size:21px}
+  .visit-grid{grid-template-columns:1fr}
+  .place{min-height:440px}
+  .place-card{padding:24px}
+  .place-card .btns .btn{flex:1}
+  .cta .hero-ctas{max-width:420px;margin-left:auto;margin-right:auto}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .foot-grid > div:first-child{grid-column:1/-1}
+  .mbar{display:flex}
+  .sheet-inner{top:auto;bottom:0;left:0;transform:none;width:100%;border-radius:24px 24px 0 0;padding:24px var(--gutter) calc(24px + env(safe-area-inset-bottom))}
+  .sheet h3{font-size:30px}
+  .opt{grid-template-columns:44px 1fr auto;gap:12px;padding:14px}
+  .opt .oi{width:44px;height:44px;font-size:20px}
+  .bp-bar{height:58px}
+  .bp-title{display:none}
+  .specials-row,.team-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 6px;gap:14px;scrollbar-width:none;scroll-padding-inline:var(--gutter)}
+  .specials-row::-webkit-scrollbar,.team-grid::-webkit-scrollbar{display:none}
+  .spc{flex:0 0 82%;scroll-snap-align:start}
+  .member{flex:0 0 76%;scroll-snap-align:start}
+  .member.feature{display:flex}
+  .member.feature img{aspect-ratio:4/5;height:auto;flex:none}
+  /* Shorter page on phones: side-swipe rows instead of tall stacks */
+  section{padding:52px 0}
+  .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 4px;scrollbar-width:none;scroll-padding-inline:var(--gutter);grid-template-rows:none}
+  .gallery::-webkit-scrollbar{display:none}
+  .gallery img,.gallery img:first-child{flex:0 0 72%;height:190px;scroll-snap-align:start;grid-row:auto}
+  .stat b{font-size:30px}
+  .stats{gap:8px 26px}
+  .vp-head{margin-bottom:16px}
+  .picks,.tiers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:16px var(--gutter) 6px;gap:12px;scrollbar-width:none;scroll-padding-inline:var(--gutter);grid-template-columns:none}
+  .picks::-webkit-scrollbar,.tiers::-webkit-scrollbar{display:none}
+  .picks{padding-top:2px}
+  .pick{flex:0 0 84%;scroll-snap-align:start}
+  .tier{flex:0 0 84%;scroll-snap-align:start;padding:26px 24px}
+  .tier .price{font-size:46px;margin:12px 0 2px}
+  .tier ul{margin-bottom:22px}
+  .points-strip{margin-top:30px}
+  .member img{aspect-ratio:1/1}
+  .member.feature img{aspect-ratio:1/1}
+  .crew{margin-top:22px;padding-top:20px}
+  .place{min-height:380px}
+  .steps li{padding:14px 0}
+}
+@media (min-width:861px) and (max-width:1080px){
+  .specials-row{grid-template-columns:repeat(2,1fr)}
+}
+.swipe-hint{display:none;font-size:13px;color:var(--ink-soft);margin-top:14px}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="topbar">
+  <div class="wrap">
+    <span>Gift cards 20% off online · code <b>BF20</b></span>
+    <a href="#specials">See specials</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Spa Sassé home">
+      <img src="https://static.wixstatic.com/media/a81db0_52cdc6dbff634316a6a4b75c3097402f~mv2.png/v1/fill/w_364,h_178,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Spa Sassé, est. 1982" width="94" height="46">
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="nav-dd">
+        <a href="#services" class="dd-trigger" aria-haspopup="true">Treatments <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dd-panel" role="menu">
+          <a href="#" data-treat="massage" role="menuitem"><b>Massage</b><span>Custom, Lomi Lomi, Crescendo · from $80</span></a>
+          <a href="#" data-treat="facials" role="menuitem"><b>Facials</b><span>Custom, HydraFacial, BBL · from $90</span></a>
+          <a href="#" data-treat="body" role="menuitem"><b>Body treatments</b><span>Wraps, scrubs, Vichy shower · from $55</span></a>
+          <a href="#" data-treat="medspa" role="menuitem"><b>Med Spa</b><span>CoolSculpting, CoolTone, laser · from $300</span></a>
+          <a href="#" data-treat="injectables" role="menuitem"><b>Injectables</b><span>Botox, Daxxify, fillers · from $150</span></a>
+          <a href="#" data-treat="couples" role="menuitem"><b>Couples</b><span>Side-by-side massage &amp; packages · from $240</span></a>
+          <div class="dd-foot"><a href="#guide">Not sure? Help me choose →</a></div>
+        </div>
+      </div>
+      <a href="#memberships">Memberships</a>
+      <a href="#specials">Specials</a>
+      <a href="#team">Team</a>
+      <a href="#" data-gift data-panel-title="Gift Cards">Gift Cards</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-call" href="tel:+15032288266" aria-label="Call Spa Sassé">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>
+        <span class="num">(503) 228-8266</span>
+      </a>
+      <button class="btn btn-primary btn-sm" data-book>Book a Visit</button>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu" id="menuOpen"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mmenu" aria-hidden="true">
+  <div class="mm-head">
+    <img src="https://static.wixstatic.com/media/a81db0_52cdc6dbff634316a6a4b75c3097402f~mv2.png/v1/fill/w_364,h_178,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Spa Sassé" height="38" style="height:38px;width:auto">
+    <button class="mm-close" id="menuClose" aria-label="Close menu">×</button>
+  </div>
+  <div class="mm-group">
+    <span class="eyebrow">Treatments</span>
+    <a href="#" data-treat="massage">Massage</a>
+    <a href="#" data-treat="facials">Facials</a>
+    <a href="#" data-treat="body">Body treatments</a>
+    <a href="#" data-treat="medspa">Med Spa</a>
+    <a href="#" data-treat="injectables">Injectables</a>
+    <a href="#" data-treat="couples">Couples</a>
+  </div>
+  <div class="mm-group">
+    <span class="eyebrow">More</span>
+    <a href="#specials" data-close>Specials</a>
+    <a href="#memberships" data-close>Memberships</a>
+    <a href="#team" data-close>Our team</a>
+    <a href="#" data-gift data-close data-panel-title="Gift Cards">Gift cards</a>
+    <a href="#visit" data-close>Visit us</a>
+  </div>
+  <div class="mm-cta">
+    <button class="btn btn-primary" data-book>Book a Visit</button>
+    <a class="btn btn-ghost" href="tel:+15032288266" data-close>Call (503) 228-8266</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text reveal">
+      <span class="eyebrow">Portland wellness &amp; med spa · Since 1982</span>
+      <h1>Restore your body.<br><em>Return to yourself.</em></h1>
+      <p class="lead">Massage, facials and med spa care in the heart of downtown Portland, tailored to how you want to feel.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" data-book>Book a Visit</button>
+        <a class="btn btn-ghost" href="#guide">Help Me Choose</a>
+      </div>
+      <div class="trust">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7L12 17.6 5.8 21.2l1.6-7L2 9.5l7.1-.6z"/></svg><span data-rating-line>4.7 on Google · 505 reviews</span></span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open daily 10–6</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Woman-owned, downtown</span>
+      </div>
+    </div>
+    <div class="hero-media reveal">
+      <img class="main" src="https://static.wixstatic.com/media/9d268d_3b253db3d2f54b4fa081c029a5c74a97~mv2.jpg/v1/crop/x_1513,y_640,w_2477,h_2028/fill/w_1300,h_1064,al_c,q_85,enc_avif,quality_auto/lounge.jpg" alt="The relaxation lounge at Spa Sassé in downtown Portland" width="1300" height="1064" fetchpriority="high">
+      <div class="hero-card">
+        <div>
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p><strong>“I left feeling completely restored.”</strong><br>Allysa C. · Custom Massage</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guide -->
+<section class="guide" id="guide">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Help me choose</span>
+        <h2>What brings you <em>in today?</em></h2>
+        <p class="lead">Pick a goal. We'll show you where most guests start, with prices and times.</p>
+      </div>
+    </div>
+    <div class="chips" role="tablist" aria-label="Choose your goal">
+      <button class="chip" role="tab" aria-selected="true" data-goal="relax"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19l7-7"/></svg>Relax &amp; unwind</button>
+      <button class="chip" role="tab" aria-selected="false" data-goal="skin"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="M12 8l1.5 2.5L16 12l-2.5 1.5L12 16l-1.5-2.5L8 12l2.5-1.5z"/></svg>Glowing skin</button>
+      <button class="chip" role="tab" aria-selected="false" data-goal="together"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18.5S3 14.8 3 10.4A3.4 3.4 0 019 8.2a3.4 3.4 0 016 2.2c0 1-.3 2-.8 2.8"/><path d="M15.5 20s-4-2.5-4-5.4a2.3 2.3 0 014-1.5 2.3 2.3 0 014 1.5c0 2.9-4 5.4-4 5.4z"/></svg>Together</button>
+      <button class="chip" role="tab" aria-selected="false" data-goal="results"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 6 7.2 6 10.5a6 6 0 01-12 0C6 10.2 9 7 12 3z"/><path d="M9.5 14.5a2.5 2.5 0 002.5 2.5"/></svg>Lines &amp; contouring</button>
+    </div>
+    <div class="picks" id="picks" role="tabpanel" aria-live="polite"></div>
+    <p class="guide-foot">Members can pay with points. Pay over time with Affirm on eligible services. Still not sure? <a href="tel:+15032288266">Call (503) 228-8266</a> and we'll recommend a starting point.</p>
+  </div>
+</section>
+
+<!-- Specials -->
+<section id="specials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">This month at Sassé</span>
+        <h2>Current <em>specials</em></h2>
+      </div>
+      <a class="link" href="https://www.spasasse.com/specials" target="_blank" rel="noopener">All specials &amp; terms</a>
+    </div>
+    <div class="specials-row">
+      <article class="spc reveal">
+        <div class="ph"><img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_4cb64d4c94dc468890116d39fee2cd5c~mv2.png/v1/fill/w_800,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/s1.png" alt="Skin rejuvenation special"><span class="off">Save 20%</span></div>
+        <div class="bd"><h3>Fine lines? Ghosted.</h3><p>Microneedling, Forever Young, TCA peels, Botox® and Daxxify®.</p>
+          <div class="acts"><button class="btn btn-primary btn-sm" data-book>Book now</button></div></div>
+      </article>
+      <article class="spc reveal">
+        <div class="ph"><img loading="lazy" src="https://static.wixstatic.com/media/11062b_64b9df6413f64abb8248fcf489288ef3~mv2.jpg/v1/fill/w_800,h_500,al_c,q_85,enc_avif,quality_auto/s2.jpg" alt="Gift card special"><span class="off">Save 20%</span></div>
+        <div class="bd"><h3>Online gift cards</h3><p>The easiest gift in Portland. Use code <span class="code">BF20</span> at checkout.</p>
+          <div class="acts"><a class="btn btn-primary btn-sm" href="#" data-gift data-panel-title="Gift Cards">Buy a gift card</a></div></div>
+      </article>
+      <article class="spc reveal">
+        <div class="ph"><img loading="lazy" src="https://static.wixstatic.com/media/11062b_944f427e75af4617b94e3528e6c238dc~mv2.jpeg/v1/fill/w_800,h_500,al_c,q_85,enc_avif,quality_auto/s3.jpg" alt="Midweek massage"><span class="off">Mon–Thu</span></div>
+        <div class="bd"><h3>Midweek massage</h3><p>10% off any custom massage, Monday to Thursday.</p>
+          <div class="acts"><button class="btn btn-primary btn-sm" data-book-item="Custom Massage" data-book-cat="massage">Book massage</button></div></div>
+      </article>
+      <article class="spc reveal">
+        <div class="ph"><img loading="lazy" src="https://static.wixstatic.com/media/11062b_5925d424ab9d4dd881aee7162dc1cf7c~mv2.jpg/v1/fill/w_800,h_500,al_c,q_85,enc_avif,quality_auto/s4.jpg" alt="Hot stone massage"><span class="off">Complimentary</span></div>
+        <div class="bd"><h3>Relax &amp; rejuvenate</h3><p>Hot stones and aromatherapy added to your massage.</p>
+          <div class="acts"><button class="btn btn-primary btn-sm" data-book-item="Custom Massage" data-book-cat="massage">Book massage</button></div></div>
+      </article>
+      <article class="spc reveal">
+        <div class="ph"><img loading="lazy" src="coolsculpting-room.jpg" alt="CoolSculpting room at Spa Sassé"><span class="off">Save 70%</span></div>
+        <div class="bd"><h3>CoolSculpting: it takes two</h3><p>Gobble up the good looks with our holiday CoolSculpting offer.</p>
+          <div class="acts"><a class="btn btn-primary btn-sm" href="tel:+15032288266">Call for free consult</a></div></div>
+      </article>
+      <article class="spc reveal">
+        <div class="ph"><img loading="lazy" src="https://static.wixstatic.com/media/32988d_0b483b869e014865b715d24f6eb15fbc~mv2.png/v1/fill/w_800,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/s6.png" alt="Spray tan"><span class="off">Save 10%</span></div>
+        <div class="bd"><h3>Holiday glow spray tan</h3><p>A natural, sun-kissed tan. Save on a package of 3.</p>
+          <div class="acts"><button class="btn btn-primary btn-sm" data-book>Book now</button></div></div>
+      </article>
+    </div>
+    <p class="fine">Specials can't be combined with other offers or membership discounts. <a href="https://www.spasasse.com/specials" target="_blank" rel="noopener">Full terms</a></p>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Our services</span>
+        <h2>Care for how you <em>want to feel</em></h2>
+      </div>
+      <a class="link" href="#" data-spa-menu data-panel-title="Full spa menu">See full menu &amp; prices</a>
+    </div>
+    <div class="services-row">
+      <article class="svc reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/a81db0_7b08cba20aee43c5bbe28413377ea890~mv2.png/v1/crop/x_600,y_0,w_1500,h_1700/fill/w_700,h_840,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/massage.png" alt="Massage at Spa Sassé">
+        <div class="svc-body"><h3>Massage</h3><p class="from">50–110 min · from $140</p>
+          <div class="row"><a href="#" data-treat="massage">Explore</a></div></div>
+      </article>
+      <article class="svc reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_f3d153ba217b4a0ea96311682d6685bc~mv2.jpg/v1/fill/w_700,h_840,al_c,q_85,enc_avif,quality_auto/facial.jpg" alt="Treatment room at Spa Sassé">
+        <div class="svc-body"><h3>Facials</h3><p class="from">Custom · HydraFacial · from $90</p>
+          <div class="row"><a href="#" data-treat="facials">Explore</a></div></div>
+      </article>
+      <article class="svc reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_13575aa68def451ab0e1d7c484bc4d37~mv2.jpg/v1/fill/w_700,h_840,al_c,q_85,enc_avif,quality_auto/medspa.jpg" alt="Microneedling treatment">
+        <div class="svc-body"><h3>Med Spa</h3><p class="from">BBL · CoolTone · laser · from $300</p>
+          <div class="row"><a href="#" data-treat="medspa">Explore</a></div></div>
+      </article>
+      <article class="svc reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/32988d_a938494d9eec49e2a5d12c504f85634b~mv2.png/v1/fill/w_700,h_840,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/injectables.png" alt="Aesthetic injectables consultation">
+        <div class="svc-body"><h3>Injectables</h3><p class="from">Botox · Daxxify · fillers · from $150</p>
+          <div class="row"><a href="#" data-treat="injectables">Explore</a></div></div>
+      </article>
+      <article class="svc reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/a81db0_1f2fabb45d494b378876fcdceb04ce28~mv2.png/v1/crop/x_700,y_0,w_1700,h_2040/fill/w_700,h_840,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/couples.png" alt="Couples spa experience">
+        <div class="svc-body"><h3>Couples</h3><p class="from">Massage &amp; packages · from $280</p>
+          <div class="row"><a href="#" data-treat="couples">Explore</a></div></div>
+      </article>
+    </div>
+    <p class="swipe-hint">Swipe to see all treatments →</p>
+  </div>
+</section>
+
+<!-- Memberships -->
+<section class="members" id="memberships">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Memberships</span>
+        <h2>Make wellness <em>part of your rhythm</em></h2>
+        <p class="lead">Monthly points you can spend on any spa or select med spa service, plus member pricing. Points roll over.</p>
+      </div>
+    </div>
+    <div class="tiers">
+      <div class="tier reveal">
+        <h3>Restore</h3>
+        <div class="price">$130<small> / month</small></div>
+        <p class="points">2 wellness points each month</p>
+        <ul>
+          <li>Enough for one custom massage or facial</li>
+          <li>10% off additional services</li>
+          <li>Points roll over</li>
+        </ul>
+        <a class="btn btn-primary" href="https://www.vagaro.com/cl/LybAlumVkJZTscKu26H3NjDW9nTV7C2ta1hrwHohZ1c=" data-panel data-panel-title="Join Restore">Join Restore</a>
+      </div>
+      <div class="tier pop reveal">
+        <span class="badge">Most popular</span>
+        <h3>Restore Plus</h3>
+        <div class="price">$249<small> / month</small></div>
+        <p class="points">4 wellness points each month</p>
+        <ul>
+          <li>Two massages or facials, or one IPL facial</li>
+          <li>15% off services</li>
+          <li>10% off products</li>
+          <li>Points roll over</li>
+        </ul>
+        <a class="btn btn-primary" href="https://www.vagaro.com/cl/2EmvEGOTgHuTK9zXq7WPxpI3JDk4H2eanYUuwML6oHg=" data-panel data-panel-title="Join Restore Plus">Join Restore Plus</a>
+      </div>
+      <div class="tier reveal">
+        <h3>Ritual Reserve</h3>
+        <div class="price">$399<small> / month</small></div>
+        <p class="points">6 wellness points each month</p>
+        <ul>
+          <li>Three massages, or full-face microneedling</li>
+          <li>20% off services</li>
+          <li>10% off products</li>
+          <li>Points roll over</li>
+        </ul>
+        <a class="btn btn-primary" href="https://www.vagaro.com/cl/jN0TyTrVPxtA2jZHJ6L5DyOoCnjpcZvNXcU9r90SrJE=" data-panel data-panel-title="Join Ritual Reserve">Join Ritual Reserve</a>
+      </div>
+    </div>
+    <div class="points-strip reveal">
+      <div class="label">What a point<br>gets you</div>
+      <div class="pt"><b>1 pt</b>Treatment facial, hydro bath, classic mani or pedi</div>
+      <div class="pt"><b>2 pts</b>Custom massage, custom facial or back facial</div>
+      <div class="pt"><b>4 pts</b>IPL/BBL laser facial or CoolTone</div>
+      <div class="pt"><b>6 pts</b>Scarlet SRF microneedling, full face</div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Reviews</span>
+        <h2>Guests leave <em>restored</em></h2>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px">
+        <span class="rating-pill"><b data-rating>4.7</b><span class="stars">★★★★★</span><span data-count>505 Google reviews</span></span>
+        <a class="link" href="https://share.google/8cmvAL13OkMx6z0Mx" target="_blank" rel="noopener">Read reviews</a>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <figure class="review reveal">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>“Beautiful, clean and relaxing environment. My massage therapist was incredible. I left feeling completely restored.”</blockquote>
+        <cite>Allysa C. · Custom Massage</cite>
+      </figure>
+      <figure class="review reveal">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>“Had the best massage of my life with Ihor and a wonderful facial with Bella. My body was relaxed in a way it had never been.”</blockquote>
+        <cite>Susan G. · Google review</cite>
+      </figure>
+      <figure class="review reveal">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>“Everything was perfect, from the front desk staff to the amazing decor. Sara was so kind and made me feel comfortable.”</blockquote>
+        <cite>Kaitlin D. · Pregnancy massage, Google</cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Meet your team</span>
+        <h2>Real people, <em>real expertise</em></h2>
+      </div>
+      <a class="link" href="https://www.spasasse.com/team" target="_blank" rel="noopener">Meet the whole team</a>
+    </div>
+    <div class="team-grid">
+      <article class="member feature reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_30f7796e719a4500b9ee42238d506be9~mv2.jpg/v1/fill/w_800,h_900,al_t,q_85,enc_avif,quality_auto/sara.jpg" alt="Sara S., founder of Spa Sassé">
+        <div class="bd"><div class="role">Founder · Advanced Aesthetician, LMT</div><h3>Sara S.</h3>
+          <p>Sara opened Spa Sassé in 1982 to create a welcoming, peaceful space for every guest. She's known for her Lomi Lomi massage and advanced aesthetics.</p></div>
+      </article>
+      <article class="member reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_52599804975c44bbb23dfbde9a46da4b~mv2.jpeg/v1/fill/w_600,h_750,al_t,q_85,enc_avif,quality_auto/wiggins.jpg" alt="Dr. M. Wiggins, ND">
+        <div class="bd"><div class="role">Medical Director</div><h3>Dr. M. Wiggins, ND</h3>
+          <p>Advanced training in aesthetics, focused on safe, innovative and personalized care.</p></div>
+      </article>
+      <article class="member reveal">
+        <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_03dffff89e7a4dbfbc5e6f8edf44da10~mv2.jpg/v1/fill/w_600,h_750,al_t,q_85,enc_avif,quality_auto/dara.jpg" alt="Dara D., RN, BSN">
+        <div class="bd"><div class="role">RN, BSN · Injector</div><h3>Dara D.</h3>
+          <p>Nearly 20 years of nursing plus advanced aesthetic training, for natural, confidence-boosting results.</p></div>
+      </article>
+    </div>
+    <div class="crew reveal">
+      <div class="faces">
+        <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_f072049c80c842a1b56b881c02bcad9f~mv2.png/v1/fill/w_120,h_120,al_t,q_85,enc_avif,quality_auto/m.png" alt="Michelle M.">
+        <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_ede9bb85d4c94f468962a0d3ad4c9227~mv2.png/v1/fill/w_120,h_120,al_t,q_85,enc_avif,quality_auto/i.png" alt="Ihor K.">
+        <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_a50fdf68e7844ab191d0c1a59fff19b1~mv2.jpg/v1/fill/w_120,h_120,al_t,q_85,enc_avif,quality_auto/a.jpg" alt="Austin K.">
+        <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_1c6c55999ca54ba58ac545986f1fd2f9~mv2.jpeg/v1/fill/w_120,h_120,al_t,q_85,enc_avif,quality_auto/b.jpg" alt="Bella B.">
+        <img loading="lazy" src="https://static.wixstatic.com/media/bf309b_b2fbbbce91504c1b810a5d9999ad4c1f~mv2.jpg/v1/fill/w_120,h_120,al_t,q_85,enc_avif,quality_auto/d.jpg" alt="Destini T.">
+      </div>
+      <p>Plus licensed massage therapists, estheticians and nurse injectors, including Michelle, Ihor, Austin, Bella, Destini, Krystal, Claire and Seaira.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Visit -->
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <span class="eyebrow">Your first visit</span>
+      <h2>Easy from <em>booking to bliss</em></h2>
+      <ol class="steps">
+        <li><div><b>Pick your treatment</b><span>Use the guide above, or call and we'll help you choose.</span></div></li>
+        <li><div><b>Choose a time and provider</b><span>Our secure booking takes about two minutes.</span></div></li>
+        <li><div><b>Arrive 10 minutes early</b><span>Settle in with champagne or sparkling cider and chocolates before your treatment.</span></div></li>
+      </ol>
+      <div class="hero-ctas"><button class="btn btn-primary" data-book>Book a Visit</button></div>
+    </div>
+    <div class="place reveal">
+      <img loading="lazy" src="couples-suite.jpg" alt="Couples suite at Spa Sassé">
+      <div class="place-card">
+        <h3>Find us downtown</h3>
+        <dl>
+          <dt>Address</dt><dd>630 SW Alder St, Portland, OR 97205</dd>
+          <dt>Hours</dt><dd>Open daily, 10am – 6pm</dd>
+          <dt>Phone</dt><dd><a href="tel:+15032288266">(503) 228-8266</a></dd>
+        </dl>
+        <div class="btns">
+          <a class="btn btn-light btn-sm" href="https://maps.app.goo.gl/4a5eyHJaKLqznTj17" target="_blank" rel="noopener">Directions</a>
+          <a class="btn btn-sm" style="border:1.5px solid rgba(255,255,255,.6);color:#fff" href="tel:+15032288266">Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap visit-photos reveal">
+    <div class="vp-head"><h3>A calm space in the heart of downtown</h3>
+      <div class="stats">
+          <div class="stat"><b>1982</b><span>Serving Portland since</span></div>
+          <div class="stat"><b>57</b><span>Treatments</span></div>
+          <div class="stat"><b>12</b><span>Highly trained providers</span></div>
+        </div>
+    </div>
+    <div class="gallery">
+      <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_f3d153ba217b4a0ea96311682d6685bc~mv2.jpg/v1/fill/w_900,h_700,al_c,q_85,enc_avif,quality_auto/room3.jpg" alt="Treatment room">
+      <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_3c888e99982141ce8bd46a80e828f528~mv2.jpg/v1/fill/w_600,h_400,al_c,q_85,enc_avif,quality_auto/reception.jpg" alt="Reception">
+      <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_c6afd1c9b1b343cdbd55a036888d1b82~mv2.jpg/v1/fill/w_600,h_400,al_c,q_85,enc_avif,quality_auto/room1.jpg" alt="Treatment room">
+      <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_f78c7c1d4af24579bbf56cf08262f7da~mv2.jpeg/v1/fill/w_600,h_400,al_c,q_85,enc_avif,quality_auto/nails.jpg" alt="Nail and pedicure area">
+      <img loading="lazy" src="https://static.wixstatic.com/media/9d268d_bd406913d04c428591b03b58311b0ed4~mv2.jpg/v1/fill/w_600,h_400,al_c,q_85,enc_avif,quality_auto/room2.jpg" alt="Treatment room">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap reveal">
+    <span class="eyebrow">Ready when you are</span>
+    <h2>Your next hour of <em>calm</em> is a tap away</h2>
+    <p class="lead">Book online in two minutes, or call and we'll find the right fit for you.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" data-book>Book a Visit</button>
+      <a class="btn btn-ghost" href="#memberships">See Memberships</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="foot-logo" src="https://static.wixstatic.com/media/a81db0_52cdc6dbff634316a6a4b75c3097402f~mv2.png/v1/fill/w_364,h_178,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Spa Sassé">
+        <p>Luxury wellness &amp; med spa in downtown Portland since 1982.</p>
+      </div>
+      <div>
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="#" data-treat="massage">Massage</a></li>
+          <li><a href="#" data-treat="facials">Facials</a></li>
+          <li><a href="#" data-treat="medspa">CoolSculpting® Elite</a></li>
+          <li><a href="#" data-treat="injectables">Injectables</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Spa Sassé</h4>
+        <ul>
+          <li><a href="https://www.spasasse.com/about-spa-sasse" target="_blank" rel="noopener">About</a></li>
+          <li><a href="https://www.spasasse.com/team" target="_blank" rel="noopener">Our Team</a></li>
+          <li><a href="https://www.spasasse.com/payment-plans" target="_blank" rel="noopener">Payment Plans</a></li>
+          <li><a href="https://www.spasasse.com/careers" target="_blank" rel="noopener">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/4a5eyHJaKLqznTj17" target="_blank" rel="noopener">630 SW Alder St</a></li>
+          <li><a href="tel:+15032288266">(503) 228-8266</a></li>
+          <li><a href="mailto:info@spasasse.com">info@spasasse.com</a></li>
+          <li>Open daily 10am – 6pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Spa Sassé · <a href="https://www.instagram.com/spasasse/">Instagram</a> · <a href="http://www.facebook.com/spasasse">Facebook</a></span>
+      <span class="demo-note">Design concept for review. Not the live site.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky mobile bar -->
+<nav class="mbar" id="mbar" aria-label="Quick actions">
+  <a href="tel:+15032288266"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>Call</a>
+  <button class="book" data-book>Book a Visit</button>
+  <a href="https://maps.app.goo.gl/4a5eyHJaKLqznTj17" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Directions</a>
+</nav>
+
+
+
+<!-- Book Now: 3 friendly steps, then the secure calendar for the time -->
+<div class="flow" id="flow" role="dialog" aria-modal="true" aria-labelledby="flTitle" aria-hidden="true">
+  <div class="fl-bar">
+    <button class="ts-back" id="flBack"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>Back</button>
+    <span class="ttl" id="flTitle">Book a visit</span>
+    <button class="fl-close" id="flClose" aria-label="Close booking">×</button>
+  </div>
+  <div class="fl-steps" aria-hidden="true">
+    <div class="fl-step" data-s="1"><i>1</i><span>Treatment</span></div>
+    <div class="fl-step" data-s="2"><i>2</i><span>Provider</span></div>
+    <div class="fl-step" data-s="3"><i>3</i><span>Time</span></div>
+    <div class="fl-step" data-s="4"><i>4</i><span>Confirm</span></div>
+  </div>
+  <div class="fl-body" id="flBody"><div class="fl-inner" id="flInner"></div></div>
+  <div class="fl-foot"><div class="in">
+    <div class="fl-pick" id="flPick">Choose a treatment to continue</div>
+    <button class="btn btn-primary" id="flNext" disabled>Continue</button>
+  </div></div>
+</div>
+
+<!-- Treatment menu sheet: full menu with prices, without leaving the site -->
+<div class="tsheet" id="tsheet" role="dialog" aria-modal="true" aria-labelledby="tsTitle" aria-hidden="true">
+  <div class="ts-bar">
+    <button class="ts-back" id="tsBack">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+      Back
+    </button>
+    <div class="ts-actions">
+      <button class="btn btn-primary btn-sm" data-book>Book a Visit</button>
+      <button class="menu-btn" data-open-menu aria-label="Open menu" aria-controls="mmenu"><span></span></button>
+    </div>
+  </div>
+  <div class="ts-hero"><img id="tsImg" alt=""><div class="wrap"><span class="eyebrow" style="color:#e6d6b0">Treatments</span><h2 id="tsTitle">Massage</h2><p id="tsIntro"></p></div></div>
+  <div class="wrap">
+    <div class="ts-list" id="tsList"></div>
+    <p class="ts-foot">Prices are starting prices. Members can pay with points, and Affirm lets you pay over time on eligible services. Questions? <a href="tel:+15032288266">Call (503) 228-8266</a>.</p>
+  </div>
+</div>
+
+<!-- In-site booking panel: keeps guests on the site with a clear way back -->
+<div class="bpanel" id="bpanel" role="dialog" aria-modal="true" aria-labelledby="bpTitle" aria-hidden="true">
+  <div class="bp-bar">
+    <button class="bp-back" id="bpBack">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+      Back to Spa Sassé
+    </button>
+    <span class="bp-title" id="bpTitle">Booking</span>
+    <a class="bp-new" id="bpNew" href="#" target="_blank" rel="noopener">Open in new tab</a>
+  </div>
+  <div class="bp-pick" id="bpPick"></div>
+  <div class="bp-frame">
+    <div class="bp-loading">Loading secure booking…</div>
+    <iframe id="bpFrame" title="Secure booking" allow="payment"></iframe>
+  </div>
+  <div class="bp-help">Secure booking by our scheduling partner. Questions? <a href="tel:+15032288266">Call (503) 228-8266</a></div>
+</div>
+
+<script>
+const BOOK_SPA = "https://www.vagaro.com//Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVANc0X9h9wdWvoQNUvtVdEWjr5sno0ReOE9tsa283BS7LC849/MkytCz/bRuYoihEvA11NuABndQ/ot/o61AHPdiNiW/OcpAsRXbbUoExv+6s1WetZLqucce3EofxmJMZezF3ARjjDAp5BmWSvcFAqyTK3C0dSNkIc9Mjvx/cAJAlNDISOBvCE/ukA+mJVkN4o55dM2HJr+KeGdTFH98bPHnNzLGY0rD6ruKBnyeYkMKK6GkWl6FVqj5kYNqCA7T8xH0ObqPPo6FFrkIBpJJ5307JMILrYi7qijC1arXP71E/FQ2pIAHQab4bL9m+ZWBQdQI9srbxYSIwRqcYSfsNIb5yM0X97v6dZXsRNHJwPjgp/GH63tdTu7PdjkqGjNcVSOLX6CdWFim4PS9zcc9ol0GqL9BfTTwkwKZC7nK23H3+S/rXViemhD/4mzlYMXW3Q==";
+const BOOK_AES = "https://sasseaesthetics.myaestheticrecord.com/online-booking";
+const GIFT_URL = "https://www.vagaro.com//Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVANc0X9h9wdWvoQNUvtVdEWjr5sno0ReOE9tsa283BS7LC849/MkytCz/bRuYoihEvA11NuABndQ/ot/o61AHPeaK11d6F/dR237D90niAx1yqovEAWkFOji21wciWLoflWBMfASdzn6F/w0wrxYTXE/hZc6CzLlQCppdjC31Y26fgCdYmbxdRpXn2+p6INifzvTn4Na3DouGrvgvC88/d1Wu3lnVr0Ex4k3scqHrugaLYei3nV38TqM/ThDWVtT4NFAE9LaKM4TJo9PjeAFf5T3zhdMg4EUNiy2g9uQ4s9Eh/wT0S4/ypyMOYrat/2026rppd3dnkcjr15piuyf/m/3q23n4mkUeyFMam6sIxRR";
+document.querySelectorAll('[data-gift]').forEach(a => { a.href = GIFT_URL; a.setAttribute('data-panel',''); });
+
+/* Google rating from her Maps listing, Nov 18 2026 */
+const GOOGLE_RATING = "4.7", GOOGLE_COUNT = "505";
+document.querySelectorAll('[data-rating]').forEach(e => e.textContent = GOOGLE_RATING);
+document.querySelectorAll('[data-count]').forEach(e => e.textContent = GOOGLE_COUNT + ' Google reviews');
+document.querySelectorAll('[data-rating-line]').forEach(e => e.textContent = `${GOOGLE_RATING} on Google · ${GOOGLE_COUNT} reviews`);
+
+/* Guide data: real prices from spasasse.com (Nov 2026) */
+const GOALS = {
+  relax: [
+    {tag:"Most booked", name:"Custom Massage", desc:"Relaxation, deep tissue, lymphatic, cupping and more. Tell your therapist what you'd like.", price:"$140", dur:"or 2 member points", url:BOOK_SPA},
+    {tag:"Signature", name:"Crescendo", desc:"Custom massage, Dead Sea salt exfoliation, Vichy rain shower and a scalp massage.", price:"$265", dur:"Couples from $530", url:BOOK_SPA},
+    {tag:"Hawaiian", name:"Lomi Lomi", desc:"Long, flowing strokes with warm, blessed lava stones at no extra charge.", price:"$140", dur:"50 · 80 · 110 min", url:BOOK_SPA}
+  ],
+  skin: [
+    {tag:"Great first visit", name:"Customized Facial", desc:"A European-style facial matched to your skin on the day. Calm, clean, glowing.", price:"$140", dur:"or 2 member points", url:BOOK_SPA},
+    {tag:"Instant glow", name:"HydraFacial MD®", desc:"Deep cleanse, extractions and hydrating serums with no downtime.", price:"$199", dur:"Signature · Deluxe", url:BOOK_SPA},
+    {tag:"Results", name:"Forever Young BBL", desc:"Broadband light that fades sun damage, redness and pigmentation and boosts collagen.", price:"$350", dur:"or 4 member points", url:BOOK_SPA}
+  ],
+  together: [
+    {tag:"Most booked", name:"Couples Massage", desc:"Side by side in our couples suite, each massage customized for you both.", price:"$280", dur:"50 · 80 min", url:BOOK_SPA},
+    {tag:"Package", name:"Divine Duo", desc:"A massage and a facial for each of you. Providers come to you, so you never leave the bed.", price:"$560", dur:"100 min", url:BOOK_SPA},
+    {tag:"Light & sweet", name:"Couples Foot Bliss", desc:"Foot masque and personal aromatherapy, or upgrade to a full pedicure.", price:"$240", dur:"Bliss · Pedicure", url:BOOK_SPA}
+  ],
+  results: [
+    {tag:"Most booked", name:"Botox® or Daxxify®", desc:"Relax overworked muscles to soften and prevent fine lines. New patients start with a consultation.", price:"$150", dur:"Consult if new", url:BOOK_AES},
+    {tag:"Volume", name:"Lip Fillers", desc:"Hyaluronic acid filler to add volume, sculpt and smooth. Consultation required.", price:"$800", dur:"Consult first", url:BOOK_AES},
+    {tag:"Body", name:"CoolSculpting® Elite", desc:"FDA-cleared fat reduction without surgery or downtime. Starts with a free consultation.", price:"$800", dur:"Call to book", url:"tel:+15032288266", call:true}
+  ]
+};
+const picks = document.getElementById('picks');
+function renderGoal(key){
+  picks.innerHTML = GOALS[key].map(p => `
+    <article class="pick">
+      <span class="tag">${p.tag}</span>
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <div class="meta">
+        <span class="price">${p.price === 'Consult' ? 'By consult' : `<small>from </small>${p.price}`}</span>
+        <span class="dur">${p.dur}</span>
+      </div>
+      ${p.call
+        ? `<a class="btn btn-primary btn-sm" href="${p.url}">Call for free consult</a>`
+        : `<button class="btn btn-primary btn-sm" data-book-item="${p.name}">Book this</button>`}
+    </article>`).join('');
+}
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-selected', x === c));
+  renderGoal(c.dataset.goal);
+}));
+renderGoal('relax');
+
+/* Booking sheet */
+/* [data-book] buttons now open the Book Now flow (wired up further down) */
+
+/* In-site booking panel. The phone's Back button closes it too. */
+const bp = document.getElementById('bpanel'), bpFrame = document.getElementById('bpFrame');
+function openBooking(url, title){
+  closeMenu();
+  document.getElementById('bpTitle').textContent = title || 'Booking';
+  document.getElementById('bpNew').href = url;
+  if (bpFrame.src !== url) bpFrame.src = url;
+  bp.classList.add('open'); bp.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  history.pushState({booking:true}, '');
+  document.getElementById('bpBack').focus();
+}
+function hideBooking(){
+  bp.classList.remove('open'); bp.setAttribute('aria-hidden','true');
+  syncOverflow();
+}
+/* Close directly: history.back() could step back inside the booking frame instead */
+document.getElementById('bpBack').addEventListener('click', hideBooking);
+window.addEventListener('popstate', () => { if (bp.classList.contains('open')) hideBooking(); });
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-panel]');
+  if (!a) return;
+  e.preventDefault();
+  openBooking(a.href, a.dataset.panelTitle);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && bp.classList.contains('open')) document.getElementById('bpBack').click(); });
+
+/* Mobile menu */
+const mm = document.getElementById('mmenu'), mo = document.getElementById('menuOpen');
+function openMenu(){ mm.classList.add('open'); mm.setAttribute('aria-hidden','false'); mo.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMenu(){ mm.classList.remove('open'); mm.setAttribute('aria-hidden','true'); mo.setAttribute('aria-expanded','false'); document.body.style.overflow = document.querySelector('.tsheet.open, .bpanel.open, .flow.open') ? 'hidden' : ''; }
+mo.addEventListener('click', openMenu);
+document.querySelectorAll('[data-open-menu]').forEach(b => b.addEventListener('click', openMenu));
+document.getElementById('menuClose').addEventListener('click', closeMenu);
+/* "More" links: if a treatment menu is open behind the menu, close it too so the section is visible */
+mm.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', () => {
+  const t = document.getElementById('tsheet');
+  if (t && t.classList.contains('open')) { t.classList.remove('open'); t.setAttribute('aria-hidden','true'); history.replaceState(null, ''); }
+  closeMenu();
+}));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+/* Treatment menus: prices from spasasse.com and her Vagaro booking page (Nov 2026) */
+const WIX = (id, extra='') => `https://static.wixstatic.com/media/${id}/v1/${extra}fill/w_1600,h_700,al_c,q_85,enc_avif,quality_auto/t.jpg`;
+const CALL = 'tel:+15032288266';
+const TREATMENTS = {
+  massage: {title:"Massage", intro:"Every massage is customized to you. Ask for deep tissue, aromatherapy, lymphatic drainage, prenatal and more.",
+    img: WIX('a81db0_7b08cba20aee43c5bbe28413377ea890~mv2.png','crop/x_0,y_193,w_3064,h_1306/'), items:[
+    {n:"Custom Massage", p:"$140", o:"50 min $140 · 80 min $190 · 110 min $250 · or 2 points", d:"Relaxation, deep tissue, aromatherapy, lymphatic drainage, cupping, prenatal. Tell your therapist what you'd like."},
+    {n:"Moonstruck Massage", p:"$150", o:"50 min $150 · 80 min $200 · 110 min $260", d:"Our signature massage with aromatherapy, a warm neck towel, Moonstruck truffles and champagne or sparkling cider."},
+    {n:"Lomi Lomi", p:"$140", o:"50 min $140 · 80 min $190 · 110 min $250", d:"Soothing, rhythmic Hawaiian strokes with warm, blessed lava stones at no extra charge."},
+    {n:"Ashiatsu", p:"$140", o:"50 min $140 · 80 min $190 · 110 min $250", d:"Your therapist uses their feet for broad, deep pressure. Ideal if you like deeper work."},
+    {n:"Honey Bee Mine", p:"$150", o:"50 min $150 · 80 min $200 · 110 min $260", d:"A custom massage with a honey upgrade for ultimate myofascial release."},
+    {n:"Crescendo", p:"$265", o:"50 min $265 · 80 min $315 · 110 min $375", d:"Full-body massage, then warm oil, Dead Sea salt exfoliation and a Vichy rain shower."},
+    {n:"Foot Bliss", p:"$120", o:"50 min", d:"Foot bath, sugar scrub, warm foot masque, and a foot and lower leg massage."},
+    {n:"Foot Reflexology", p:"$80", o:"25 min", d:"A warm mineral foot soak and deep reflexology in our massaging recliners."}
+  ]},
+  facials: {title:"Facials", intro:"Organic Eminence skincare and advanced light treatments, matched to your skin on the day.",
+    img: WIX('9d268d_f3d153ba217b4a0ea96311682d6685bc~mv2.jpg'), items:[
+    {n:"Customized Facial", p:"$140", o:"or 2 points", d:"Eminence Organics for aging, acne, sun damage, tone and radiance, using fresh fruits, vegetables and herbs."},
+    {n:"HydraFacial MD®", p:"$199", o:"Signature · Deluxe from $250", d:"Deep cleansing, exfoliation and extractions while infusing hydrating serums. Deluxe adds a booster and LED."},
+    {n:"Forever Young BBL Photofacial", p:"$350", o:"or 4 points", d:"Broadband light that reduces sun damage, redness, pigmentation and laxity while boosting collagen."},
+    {n:"Forever Clear BBL Acne", p:"$350", o:"or 4 points", d:"Blue, yellow and infrared light clears acne-causing bacteria without creams or medicine."},
+    {n:"LumiLift Facial", p:"$115", o:"", d:"Micro-current lymphatic drainage, face-lifting techniques, LED and ultrasonic infusion."},
+    {n:"Treatment Facial", p:"$90", o:"25 min · or 1 point", d:"A fast, results-focused facial with Eminence Organics."},
+    {n:"Back Facial", p:"$140", o:"50 min · or 2 points", d:"Detox, deep clean and hydrate your back. Extractions included."}
+  ]},
+  body: {title:"Body treatments", intro:"Wraps, scrubs and our Vichy rain shower, for skin that feels brand new.",
+    img: WIX('11062b_5925d424ab9d4dd881aee7162dc1cf7c~mv2.jpg'), items:[
+    {n:"Crescendo", p:"$265", o:"Our signature ritual", d:"Custom massage, warm oil and Dead Sea salt exfoliation, Vichy rain shower and a scalp massage."},
+    {n:"Cocoon: Facial & Body Wrap", p:"$240", o:"", d:"A full-body wrap while you enjoy a 50 minute customized facial."},
+    {n:"Energizing Body Wrap", p:"$205", o:"", d:"Full-body mud mask, warm blankets, scalp massage and Gua Sha facial massage."},
+    {n:"Cleopatra's Envy", p:"$125", o:"or 2 points", d:"Warm coconut chocolate and brown sugar exfoliation, then a Vichy rain shower massage."},
+    {n:"Rain Treatment", p:"$125", o:"or 2 points", d:"Warm oils and Dead Sea mineral salts, then a Vichy rain shower hydrotherapy massage."},
+    {n:"Dry Body Brushing", p:"$55", o:"", d:"Removes flaky skin, boosts circulation and improves the look of cellulite."}
+  ]},
+  medspa: {title:"Med Spa", intro:"Non-surgical treatments with real results, overseen by our Medical Director.",
+    img: 'coolsculpting-room.jpg', items:[
+    {n:"CoolSculpting® Elite", p:"$800", o:"Free consultation · call to book", d:"The FDA-cleared way to freeze away diet- and exercise-resistant fat, with no surgery or downtime.", call:true},
+    {n:"CoolTone", p:"$300", o:"or 4 points", d:"Magnetic muscle stimulation to tone and strengthen abs, glutes and thighs."},
+    {n:"Forever Young BBL", p:"$350", o:"or 4 points", d:"Broadband light for sun damage, redness and pigmentation, and smoother texture over time."},
+    {n:"SkinPen Microneedling", p:"$350", o:"", d:"Collagen induction to smooth texture, fine lines and scarring."},
+    {n:"Scarlet SRF Microneedling", p:"$800", o:"or 6 points", d:"Radiofrequency microneedling for deeper tightening and resurfacing."},
+    {n:"Laser Hair Removal", p:"", o:"Priced by area", d:"Long-lasting hair reduction. See areas and prices when you book."}
+  ]},
+  injectables: {title:"Injectables", intro:"Natural-looking results from nurse injectors, guided by our Medical Director.",
+    img: WIX('32988d_a938494d9eec49e2a5d12c504f85634b~mv2.png','crop/x_0,y_92,w_1536,h_841/'), items:[
+    {n:"Botox® or Daxxify®", p:"$150", o:"Consultation if new patient", d:"Neuromodulators like Botox, Dysport and Daxxify relax overworked muscles to treat and prevent lines.", aes:true},
+    {n:"Lip Fillers", p:"$800", o:"Consultation required", d:"Hyaluronic acid fillers add volume, sculpt, smooth and restore lost structure.", aes:true},
+    {n:"Cellenis DermaFiller", p:"$1,000", o:"Consultation if new patient", d:"A natural PRP treatment that fills wrinkles and fine lines for a smooth, youthful look.", aes:true}
+  ]},
+  couples: {title:"Couples", intro:"Side-by-side treatments in our couples suite, made for celebrating or just reconnecting.",
+    img: 'couples-suite.jpg', items:[
+    {n:"Couples Massage", p:"$280", o:"50 min $280 · 80 min $380", d:"Relaxation-focused massages customized for each of you."},
+    {n:"Moonstruck Couples Massage", p:"$300", o:"50 min $300 · 80 min $400", d:"Couples massage with champagne or sparkling cider and Moonstruck chocolate truffles."},
+    {n:"Couples Crescendo", p:"$530", o:"", d:"Side-by-side massages, then the Rain Treatment and Vichy rain shower together."},
+    {n:"Divine Duo", p:"$560", o:"100 min", d:"A massage and facial for each of you. Providers come to you, so you never leave the bed."},
+    {n:"Couples Spa Day", p:"$615", o:"120 min", d:"Private infrared sauna, truffles and bubbles, couples massage and the Rain Treatment."},
+    {n:"Couples Foot Bliss", p:"$240", o:"Pedicure for two from $160", d:"Foot bath, sugar scrub, foot masque and a foot and lower leg massage."}
+  ]}
+};
+const ts = document.getElementById('tsheet');
+function openTreat(key){
+  const t = TREATMENTS[key]; if (!t) return;
+  closeMenu();
+  if (document.activeElement && document.activeElement.closest('.nav-dd')) document.activeElement.blur(); /* so the dropdown doesn't stay open behind */
+  document.getElementById('tsTitle').textContent = t.title;
+  document.getElementById('tsIntro').textContent = t.intro;
+  document.getElementById('tsImg').src = t.img;
+  document.getElementById('tsList').innerHTML = t.items.map(i => `
+    <article class="ts-item">
+      <div class="top"><h3>${i.n}</h3>${i.p ? `<span class="pr"><small>from </small>${i.p}</span>` : ''}</div>
+      ${i.o ? `<div class="opts">${i.o}</div>` : ''}
+      <p>${i.d}</p>
+      ${i.call
+        ? `<a class="btn btn-ghost btn-sm" href="${CALL}">Call for free consult</a>`
+        : `<button class="btn btn-ghost btn-sm" data-book-item="${i.n}" data-book-cat="${key}">Book</button>`}
+    </article>`).join('');
+  ts.scrollTop = 0;
+  const already = ts.classList.contains('open');
+  ts.classList.add('open'); ts.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  /* switching treatment from the menu replaces the entry, so Back still goes straight home */
+  if (already) history.replaceState({treat:key}, ''); else history.pushState({treat:key}, '');
+}
+function hideTreat(){ ts.classList.remove('open'); ts.setAttribute('aria-hidden','true'); syncOverflow(); }
+document.getElementById('tsBack').addEventListener('click', () => { if (history.state && history.state.treat) history.back(); else hideTreat(); });
+document.addEventListener('click', e => { const a = e.target.closest('[data-treat]'); if (!a) return; e.preventDefault(); openTreat(a.dataset.treat); });
+window.addEventListener('popstate', () => {
+  if (bp.classList.contains('open')) return; /* booking closes first (handled above) */
+  if (ts.classList.contains('open') && !(history.state && history.state.treat)) hideTreat();
+});
+document.querySelectorAll('[data-spa-menu]').forEach(a => { a.href = BOOK_SPA; a.setAttribute('data-panel',''); });
+
+/* ---------- Book Now flow ---------- */
+const syncOverflow = () => { document.body.style.overflow = document.querySelector('.tsheet.open, .bpanel.open, .flow.open, .mobile-menu.open') ? 'hidden' : ''; };
+const PHOTO = id => `https://static.wixstatic.com/media/${id}/v1/fill/w_160,h_160,al_t,q_85,enc_avif,quality_auto/p.jpg`;
+const PROS = {
+  sara:{n:"Sara S.", r:"Founder · LMT & Advanced Aesthetician", img:PHOTO('4ef01d_30f7796e719a4500b9ee42238d506be9~mv2.jpg')},
+  ihor:{n:"Ihor K.", r:"Licensed Massage Therapist", img:PHOTO('4ef01d_ede9bb85d4c94f468962a0d3ad4c9227~mv2.png')},
+  austin:{n:"Austin K.", r:"LMT · deep tissue & neuromuscular", img:PHOTO('9d268d_a50fdf68e7844ab191d0c1a59fff19b1~mv2.jpg')},
+  destini:{n:"Destini T.", r:"Licensed Massage Therapist", img:PHOTO('bf309b_b2fbbbce91504c1b810a5d9999ad4c1f~mv2.jpg')},
+  claire:{n:"Claire G.", r:"Licensed Massage Therapist"},
+  seaira:{n:"Seaira H.", r:"LMT · yoga & meditation certified"},
+  sergio:{n:"Sergio A.", r:"Licensed Massage Therapist"},
+  bella:{n:"Bella B.", r:"Esthetician", img:PHOTO('9d268d_1c6c55999ca54ba58ac545986f1fd2f9~mv2.jpeg')},
+  michelle:{n:"Michelle M.", r:"Esthetician & Nail Technician", img:PHOTO('4ef01d_f072049c80c842a1b56b881c02bcad9f~mv2.png')},
+  dara:{n:"Dara D.", r:"RN, BSN · Injector", img:PHOTO('4ef01d_03dffff89e7a4dbfbc5e6f8edf44da10~mv2.jpg')},
+  krystal:{n:"Krystal A.", r:"RN · Nurse Injector"},
+  wiggins:{n:"Dr. M. Wiggins, ND", r:"Medical Director", img:PHOTO('4ef01d_52599804975c44bbb23dfbde9a46da4b~mv2.jpeg')}
+};
+const MASSAGE_PROS = ['ihor','austin','destini','claire','seaira','sergio','sara'];
+const CAT_PROS = { massage:MASSAGE_PROS, couples:MASSAGE_PROS, body:['sara','bella','michelle'], facials:['sara','bella','michelle'], medspa:['sara'], injectables:['dara','krystal','wiggins'] };
+const CAT_ORDER = ['massage','facials','body','medspa','injectables','couples'];
+const lengthsOf = item => [...(item.o || '').matchAll(/(\d+) min \$([\d,]+)/g)].map(m => ({min:+m[1], price:'$' + m[2]}));
+
+const flow = document.getElementById('flow'), flInner = document.getElementById('flInner');
+const F = { step:1, cat:'massage', item:null, len:null, pro:'any' };
+const proName = () => F.pro === 'any' ? 'Anyone available' : PROS[F.pro].n;
+const priceNow = () => F.len ? F.len.price : (F.item && F.item.p) || '';
+/* Sample availability for the preview: same answer every time for a given day, provider and treatment */
+const DAYNAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function nextDays(n){
+  const out = [], now = new Date();
+  for (let i = 0; i < n; i++){
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    out.push({date:d, key:`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`, label: i === 0 ? 'Today' : i === 1 ? 'Tmrw' : DAYNAMES[d.getDay()]});
+  }
+  return out;
+}
+function hash(str){ let h = 2166136261; for (const c of str){ h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+function slotsFor(day){
+  const dur = F.len ? F.len.min : 60, last = 18 * 60 - dur, now = new Date();
+  const isToday = day.date.toDateString() === now.toDateString(), nowMin = now.getHours() * 60 + now.getMinutes() + 60;
+  const keep = F.pro === 'any' ? 0.55 : 0.3, out = [];
+  for (let m = 10 * 60; m <= last; m += 30){
+    if (isToday && m < nowMin) continue;
+    if ((hash(day.key + F.pro + (F.item ? F.item.n : '') + m) % 100) / 100 >= keep) continue;
+    const h = Math.floor(m / 60), mm = m % 60, h12 = ((h + 11) % 12) + 1;
+    out.push({h, t:`${h12}:${mm ? '30' : '00'} ${h < 12 ? 'AM' : 'PM'}`});
+  }
+  return out;
+}
+function whenText(){
+  const d = nextDays(14).find(x => x.key === F.day); if (!d || !F.time) return '';
+  return `${DAYNAMES[d.date.getDay()]}, ${MONTHS[d.date.getMonth()]} ${d.date.getDate()} at ${F.time}`;
+}
+function summaryHTML(editable){
+  const e = s => editable ? `<button class="edit" data-fgo="${s}">Change</button>` : '';
+  return `<dl class="fl-sum">
+    <div class="row"><dt>Treatment</dt><dd>${F.item.n}${e(1)}</dd></div>
+    ${F.len ? `<div class="row"><dt>Length</dt><dd>${F.len.min} minutes${e(1)}</dd></div>` : ''}
+    <div class="row"><dt>Provider</dt><dd>${proName()}${e(2)}</dd></div>
+    ${F.time ? `<div class="row"><dt>When</dt><dd>${whenText()}${e(3)}</dd></div>` : ''}
+    ${priceNow() ? `<div class="row"><dt>Starting price</dt><dd>${priceNow()}</dd></div>` : ''}
+    <div class="row"><dt>Where</dt><dd>630 SW Alder St, Portland</dd></div>
+  </dl>`;
+}
+function pickLine(){
+  if (!F.item) return 'Choose a treatment to continue';
+  if (F.step === 5) return '<b>Preview only</b>No booking was made';
+  if (F.step >= 3 && F.time){ const d = nextDays(14).find(x => x.key === F.day); return `<b>${F.item.n}</b>${DAYNAMES[d.date.getDay()]} ${MONTHS[d.date.getMonth()]} ${d.date.getDate()} · ${F.time}`; }
+  const bits = [F.len ? F.len.min + ' min' : '', priceNow(), F.step > 1 ? proName() : ''].filter(Boolean).join(' · ');
+  return `<b>${F.item.n}</b>${bits}`;
+}
+function renderFlow(){
+  document.querySelectorAll('.fl-step').forEach(s => { const n = +s.dataset.s; s.classList.toggle('on', n === F.step); s.classList.toggle('done', n < F.step); });
+  const next = document.getElementById('flNext');
+  if (F.step === 1){
+    const t = TREATMENTS[F.cat];
+    flInner.innerHTML = `
+      <h2>What would you like?</h2>
+      <p class="sub">Pick a treatment. You'll choose your exact time in step 3.</p>
+      <div class="fl-cats">${CAT_ORDER.map(k => `<button class="chip" data-fcat="${k}" aria-selected="${k === F.cat}">${TREATMENTS[k].title}</button>`).join('')}</div>
+      <div class="fl-list">${t.items.map((i, idx) => {
+        const sel = F.item === i, lens = lengthsOf(i);
+        return `<div class="fl-card${sel ? ' sel' : ''}" data-fitem="${idx}" role="button" tabindex="0">
+          <div class="top"><b>${i.n}</b>${i.p ? `<span class="pr"><small>from </small>${i.p}</span>` : ''}</div>
+          <span class="d">${i.d}</span>
+          ${sel && lens.length ? `<div class="fl-lens">${lens.map(l => `<button class="fl-len${F.len && F.len.min === l.min ? ' sel' : ''}" data-flen="${l.min}">${l.min} min · ${l.price}</button>`).join('')}</div>` : ''}
+        </div>`; }).join('')}</div>
+      <p class="fl-alt">Looking for something else? <a href="${GIFT_URL}" data-panel data-panel-title="Gift Cards">Buy a gift card</a> · <a href="#memberships" data-flow-close>See memberships</a></p>`;
+    next.textContent = 'Continue'; next.disabled = !F.item;
+  } else if (F.step === 2){
+    const ids = CAT_PROS[F.cat] || [];
+    flInner.innerHTML = `
+      <h2>Who would you like?</h2>
+      <p class="sub">Choose a favorite, or let us match you with whoever is free soonest.</p>
+      <div class="fl-pros">
+        <button class="fl-pro${F.pro === 'any' ? ' sel' : ''}" data-fpro="any"><span class="av">✦</span><b>Anyone available</b><span>Most flexible times</span></button>
+        ${ids.map(id => { const p = PROS[id]; return `<button class="fl-pro${F.pro === id ? ' sel' : ''}" data-fpro="${id}">
+          ${p.img ? `<img class="av" src="${p.img}" alt="">` : `<span class="av">${p.n[0]}</span>`}<b>${p.n}</b><span>${p.r}</span></button>`; }).join('')}
+      </div>
+      <p class="fl-note">The calendar in the next step shows who is free for this treatment.</p>`;
+    next.textContent = 'Continue'; next.disabled = false;
+  } else if (F.step === 3 && F.item.call){
+    flInner.innerHTML = `
+      <h2>Book your free consultation</h2>
+      <p class="sub">CoolSculpting starts with a free consultation, booked by phone.</p>
+      ${summaryHTML(false)}
+      <p class="fl-note">Questions first? We're happy to talk it through on the phone.</p>`;
+    next.textContent = 'Call (503) 228-8266'; next.disabled = false;
+  } else if (F.step === 3){
+    const days = nextDays(14);
+    if (!F.day || !days.some(d => d.key === F.day)) F.day = (days.find(d => slotsFor(d).length) || days[0]).key;
+    const day = days.find(d => d.key === F.day), slots = slotsFor(day);
+    const parts = [['Morning', s => s.h < 12], ['Afternoon', s => s.h >= 12 && s.h < 15], ['Late afternoon', s => s.h >= 15]];
+    flInner.innerHTML = `
+      <span class="fl-preview">◷ Preview: sample times</span>
+      <h2>When works for you?</h2>
+      <p class="sub">${F.len ? F.len.min + ' minutes' : 'Your visit'} with ${F.pro === 'any' ? 'the first available provider' : proName().replace(/\.$/, '')}. Open daily 10am to 6pm.</p>
+      <div class="fl-days">${days.map(d => { const n = slotsFor(d).length; return `<button class="fl-day${d.key === F.day ? ' sel' : ''}" data-fday="${d.key}" ${n ? '' : 'disabled'}>
+        <small>${d.label}</small><b>${d.date.getDate()}</b><em>${n ? n + ' times' : 'Full'}</em></button>`; }).join('')}</div>
+      ${slots.length ? parts.map(([name, f]) => { const ps = slots.filter(f); return ps.length ? `<div class="fl-part">${name}</div><div class="fl-times">${ps.map(s => `<button class="fl-time${F.time === s.t && F.day === day.key ? ' sel' : ''}" data-ftime="${s.t}">${s.t}</button>`).join('')}</div>` : ''; }).join('')
+        : `<div class="fl-none">No times left this day. Try another day, or choose “Anyone available”.</div>`}`;
+    next.textContent = 'Continue'; next.disabled = !F.time;
+    setTimeout(() => { const s = flInner.querySelector('.fl-day.sel'); if (s) s.scrollIntoView({inline:'center', block:'nearest'}); }, 30);
+  } else if (F.step === 4){
+    flInner.innerHTML = `
+      <span class="fl-preview">◷ Preview</span>
+      <h2>Confirm your visit</h2>
+      <p class="sub">Check the details. On the live site, guests confirm right here.</p>
+      ${summaryHTML(true)}
+      <div class="fl-form" aria-label="Contact details (preview only)">
+        <label>Name<input disabled placeholder="Entered here on the live site"></label>
+        <label>Mobile<input disabled placeholder="For your text reminder"></label>
+        <label>Email<input disabled placeholder="For your confirmation"></label>
+      </div>
+      <p class="fl-note">Members can pay with points, and Affirm lets you pay over time on eligible services. <a href="https://www.spasasse.com/cancellation-policy" target="_blank" rel="noopener">Cancellation policy</a></p>`;
+    next.textContent = 'Confirm (preview)'; next.disabled = false;
+  } else {
+    flInner.innerHTML = `
+      <div class="fl-done">
+        <div class="ok">✓</div>
+        <span class="fl-preview">Preview of the confirmation screen</span>
+        <h2>You're all set</h2>
+        <div class="when">${whenText()}</div>
+        <div class="fl-banner"><b>This is a design preview. No booking was made.</b><br>On the live site, this step would confirm instantly and text a reminder the day before. To book for real today, use our current calendar.</div>
+        ${summaryHTML(false)}
+      </div>`;
+    next.textContent = 'Book for real →'; next.disabled = false;
+  }
+  document.getElementById('flPick').innerHTML = pickLine();
+  document.getElementById('flBody').scrollTop = 0;
+}
+function findItem(name, cat){
+  const cats = cat ? [cat, ...CAT_ORDER.filter(c => c !== cat)] : CAT_ORDER;
+  for (const c of cats){ const i = TREATMENTS[c].items.find(x => x.n === name); if (i) return {cat:c, item:i}; }
+  return null;
+}
+function openFlow(pre){
+  closeMenu();
+  Object.assign(F, {step:1, item:null, len:null, pro:'any', day:null, time:null});
+  if (pre && pre.cat) F.cat = pre.cat;
+  if (pre && pre.name){
+    const f = findItem(pre.name, pre.cat);
+    if (f){ F.cat = f.cat; F.item = f.item; const l = lengthsOf(f.item); F.len = l[0] || null; if (!l.length) F.step = 2; }
+  }
+  renderFlow();
+  if (pre && pre.name && F.step === 1) setTimeout(() => { const s = flInner.querySelector('.fl-card.sel'); if (s) s.scrollIntoView({block:'center'}); }, 50);
+  if (!flow.classList.contains('open')){ flow.classList.add('open'); flow.setAttribute('aria-hidden','false'); history.pushState({flow:true}, ''); }
+  syncOverflow();
+}
+function hideFlow(){ flow.classList.remove('open'); flow.setAttribute('aria-hidden','true'); syncOverflow(); }
+function closeFlow(){ if (history.state && history.state.flow) history.back(); else hideFlow(); }
+window.addEventListener('popstate', () => { if (bp.classList.contains('open')) return; if (flow.classList.contains('open') && !(history.state && history.state.flow)) hideFlow(); });
+document.getElementById('flClose').addEventListener('click', closeFlow);
+document.getElementById('flBack').addEventListener('click', () => { if (F.step > 1){ F.step--; renderFlow(); } else closeFlow(); });
+document.getElementById('flNext').addEventListener('click', () => {
+  if (F.step === 3 && F.item.call){ location.href = CALL; return; }
+  if (F.step < 5){ F.step++; renderFlow(); return; }
+  /* Step 5 (preview confirmation): hand off to the real calendar */
+  const url = F.item.aes ? BOOK_AES : BOOK_SPA;
+  const bits = [F.item.n, F.len ? F.len.min + ' min' : '', 'with ' + proName()].filter(Boolean).join(' · ');
+  const pick = document.getElementById('bpPick'); pick.textContent = 'Your pick: ' + bits.replace(/\.$/, '') + '. Select it below to see open times.'; pick.classList.add('show');
+  openBooking(url, 'Choose your time');
+});
+flInner.addEventListener('click', e => {
+  const c = e.target.closest('[data-fcat]'); if (c){ F.cat = c.dataset.fcat; F.item = null; F.len = null; renderFlow(); return; }
+  const l = e.target.closest('[data-flen]'); if (l){ F.len = lengthsOf(F.item).find(x => x.min === +l.dataset.flen); F.time = null; renderFlow(); return; }
+  const it = e.target.closest('[data-fitem]'); if (it){ const i = TREATMENTS[F.cat].items[+it.dataset.fitem]; if (F.item !== i){ F.item = i; F.len = lengthsOf(i)[0] || null; F.time = null; renderFlow(); } return; }
+  const p = e.target.closest('[data-fpro]'); if (p){ F.pro = p.dataset.fpro; F.time = null; renderFlow(); return; }
+  const dy = e.target.closest('[data-fday]'); if (dy){ F.day = dy.dataset.fday; F.time = null; renderFlow(); return; }
+  const tm = e.target.closest('[data-ftime]'); if (tm){ F.time = tm.dataset.ftime; renderFlow(); return; }
+  const g = e.target.closest('[data-fgo]'); if (g){ F.step = +g.dataset.fgo; renderFlow(); return; }
+  const fc = e.target.closest('[data-flow-close]'); if (fc){ hideFlow(); history.replaceState(null, ''); }
+});
+flInner.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-fitem]')){ e.preventDefault(); e.target.click(); } });
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-book]'); if (b){ e.preventDefault(); openFlow(); return; }
+  const bi = e.target.closest('[data-book-item]'); if (bi){ e.preventDefault(); openFlow({name: bi.dataset.bookItem, cat: bi.dataset.bookCat}); }
+});
+/* Booking reminder only shows for bookings started from the flow */
+document.addEventListener('click', e => { if (e.target.closest('[data-panel]')) document.getElementById('bpPick').classList.remove('show'); }, true);
+
+/* Sticky bar appears after the hero */
+const mbar = document.getElementById('mbar');
+const heroEl = document.querySelector('.hero');
+new IntersectionObserver(([e]) => mbar.classList.toggle('show', !e.isIntersecting), {threshold:.15}).observe(heroEl);
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
