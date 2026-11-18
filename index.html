@@ -403,15 +403,13 @@ section[id]{scroll-margin-top:70px}
 
 /* Team */
 .team{background:var(--white)}
-.team-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:20px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
 .member{border-radius:var(--radius);overflow:hidden;background:var(--cream);display:flex;flex-direction:column}
 .member img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%}
-.member.feature img{aspect-ratio:auto;flex:1;min-height:0;height:100%}
-.member .bd{padding:20px 22px 24px}
+.member .bd{padding:20px 22px 22px;flex:1}
 .member .role{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .member h3{font-size:27px;margin-bottom:8px}
 .member p{font-size:15px;color:var(--ink-soft)}
-.member.feature{display:grid;grid-template-rows:1fr auto}
 .crew{display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;margin-top:30px;padding-top:26px;border-top:1px solid var(--cream-2)}
 .crew .faces{display:flex}
 .crew .faces img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 25%;border:3px solid var(--white);margin-left:-12px}
@@ -501,8 +499,6 @@ section[id]{scroll-margin-top:70px}
   .specials-row::-webkit-scrollbar,.team-grid::-webkit-scrollbar{display:none}
   .spc{flex:0 0 82%;scroll-snap-align:start}
   .member{flex:0 0 76%;scroll-snap-align:start}
-  .member.feature{display:flex}
-  .member.feature img{aspect-ratio:4/5;height:auto;flex:none}
   /* Shorter page on phones: side-swipe rows instead of tall stacks */
   section{padding:52px 0}
   .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter) 4px;scrollbar-width:none;scroll-padding-inline:var(--gutter);grid-template-rows:none}
@@ -520,7 +516,6 @@ section[id]{scroll-margin-top:70px}
   .tier ul{margin-bottom:22px}
   .points-strip{margin-top:30px}
   .member img{aspect-ratio:1/1}
-  .member.feature img{aspect-ratio:1/1}
   .crew{margin-top:22px;padding-top:20px}
   .place{min-height:380px}
   .steps li{padding:14px 0}
@@ -848,8 +843,8 @@ section[id]{scroll-margin-top:70px}
     <div class="team-grid">
       <article class="member feature reveal">
         <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_30f7796e719a4500b9ee42238d506be9~mv2.jpg/v1/fill/w_800,h_900,al_t,q_85,enc_avif,quality_auto/sara.jpg" alt="Sara S., founder of Spa Sassé">
-        <div class="bd"><div class="role">Founder · Advanced Aesthetician, LMT</div><h3>Sara S.</h3>
-          <p>Sara opened Spa Sassé in 1982 to create a welcoming, peaceful space for every guest. She's known for her Lomi Lomi massage and advanced aesthetics.</p></div>
+        <div class="bd"><div class="role">Founder · Aesthetician, LMT</div><h3>Sara S.</h3>
+          <p>Sara opened Spa Sassé in 1982 to create a peaceful, welcoming space. Known for her Lomi Lomi massage and advanced aesthetics.</p></div>
       </article>
       <article class="member reveal">
         <img loading="lazy" src="https://static.wixstatic.com/media/4ef01d_52599804975c44bbb23dfbde9a46da4b~mv2.jpeg/v1/fill/w_600,h_750,al_t,q_85,enc_avif,quality_auto/wiggins.jpg" alt="Dr. M. Wiggins, ND">
